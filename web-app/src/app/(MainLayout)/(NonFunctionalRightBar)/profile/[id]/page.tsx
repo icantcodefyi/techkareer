@@ -4,7 +4,6 @@ import { BottomBar, Navbar } from "@/components/components";
 import { getNameFromEmail } from "@/utils/utils";
 import { useSession } from "next-auth/react";
 import React, { useEffect } from "react";
-
 import placeholder from "@/assets/placholder-jobseeker.webp";
 import Image from "next/image";
 // import { useUserInfo } from "@/hooks/useUser";
@@ -34,6 +33,7 @@ function ProfilePage({
   if (!user) {
     return <></>;
   }
+
   return (
     <>
       <Navbar className="justify-start gap-5">
