@@ -10,7 +10,7 @@ const BootCamps = () => {
     return (
         <SectionWrapper>
             <div className="flex justify-center items-center flex-col" id="features">
-                <h2 className="text-right w-full md:text-center text-3xl tracking-wide mt-4 mb-16">These are all the bootcamps we have partnered with</h2>
+                <h2 className="text-right w-full md:text-center text-3xl tracking-wide mt-5 mb-15">Our Partners</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-4">
                     {bootCamp.map((item) => (
                         <div key={item.name}>

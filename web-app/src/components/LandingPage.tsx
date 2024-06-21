@@ -24,9 +24,9 @@ const LandingPage = () => {
         direction="left"
         speed="slow"
         />
-      <BootCamps/>
       <Feature />
       <Opportunities />
+      <BootCamps/>
       <Companies />
       {/* <Sponsor /> */}
       <Footer />
