@@ -49,6 +49,10 @@ export const Welcome = () => {
             </motion.span>
           </div>
           <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.8 }}
             className="w-full md:w-[55%] text-lg md:text-xl text-[#858694] text-center  leading-8 md:leading-10"
           >
             TechKareer is used by numerous businesses, institutions, and
