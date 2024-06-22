@@ -42,7 +42,7 @@ const FeatureCard: React.FC<featureCardProps> = ({ icon, name, description, dura
             transition={{ duration: 0.2, delay: duration, ease: "easeInOut" }}
             viewport={{ once: true }}
             style={{ backgroundImage: `url(${bg.src})`, backgroundSize: "cover", backgroundPosition: "center" }}
-            className="p-4 rounded-2xl flex flex-col justify-center items-center max-w-[368px] max-h-[278px] cursor-pointer"
+            className="p-6 rounded-2xl flex flex-col justify-center items-center max-w-[368px] max-h-[278px] cursor-pointer"
         >
             <div className="bg-[#5287FA] p-2 rounded-full">
                {icon}
