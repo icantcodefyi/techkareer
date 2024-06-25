@@ -18,7 +18,7 @@ body {
 }
 
 .bg-custom {
-    background-color: #050813;
+    background-color: #060a17;
     border: 0px;
 
     box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.119);
@@ -65,5 +65,5 @@ body {
 }
 
 .faq {
-    padding: 20px;
+    padding: 40px;
 }
