@@ -1,42 +1,54 @@
-import React from 'react';
-import { candidates } from '@/constants/candidates';
+import React from "react";
+import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 
-const Page = () => {
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold mb-4">Candidates List</h2>
-            <div className="overflow-x-auto">
-                <table className="table-auto border-collapse border border-gray-300 w-full">
-                    <thead>
-                        <tr className="bg-gray-200">
-                            <th className="border border-gray-300 px-4 py-2">ID</th>
-                            <th className="border border-gray-300 px-4 py-2">Name</th>
-                            <th className="border border-gray-300 px-4 py-2">Email</th>
-                            <th className="border border-gray-300 px-4 py-2">Pitch</th>
-                            <th className="border border-gray-300 px-4 py-2">LinkedIn</th>
-                            <th className="border border-gray-300 px-4 py-2">GitHub</th>
-                            <th className="border border-gray-300 px-4 py-2">Twitter</th>
-                            <th className="border border-gray-300 px-4 py-2">Created At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {candidates.map((user, index) => (
-                            <tr key={index} className="text-gray-100">
-                                <td className="border border-gray-300 px-4 py-2">{user.ID}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.Name}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.Email}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.Introduction.Pitch}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.LinkedIn}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.GitHub}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user.Twitter}</td>
-                                <td className="border border-gray-300 px-4 py-2">{user['Created At']}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+import { candidates } from "@/constants/candidates";
+import Link from "next/link";
+console.log(candidates);
+
+const page = () => {
+  return (
+    <div className="flex flex-col  gap-4 mx-10 my-10 flex-wrap justify-center">
+      {candidates.map((candidate) => (
+        <div key={candidate.ID} className="bg-gray-800/20 p-4 rounded-lg ">
+          <h1 className="font-semibold py-3 text-2xl tracking-wide">
+            {candidate.Name}
+          </h1>
+          {/* <Link
+            className="text-gray-400 font-medium pb-3"
+            target="_blank" href={`mailto:${candidate.Email}`}
+          >
+            {candidate.Email}
+          </Link> */}
+          <p className="text-gray-400 font-medium tracking-wide ">
+            Intro - {candidate.Introduction.Pitch}
+          </p>
+          <div className="flex gap-3 mt-3">
+            <Link target="_blank" href={`mailto:${candidate.Email}`}>
+              <Mail className="hover:text-gray-200 text-gray-400" size={28} />
+            </Link>
+            <Link target="_blank" href={candidate.LinkedIn}>
+              <Linkedin
+                className="hover:text-gray-200 text-gray-400"
+                size={28}
+              />
+            </Link>
+            {candidate.Twitter && (
+              <Link target="_blank" href={candidate.Twitter}>
+                <Twitter
+                  className="hover:text-gray-200 text-gray-400"
+                  size={28}
+                />
+              </Link>
+            )}
+
+            <Link target="_blank" href={candidate.GitHub}>
+              <Github className="hover:text-gray-200 text-gray-400" size={28} />
+            </Link>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
-export default Page;
+export default page;
