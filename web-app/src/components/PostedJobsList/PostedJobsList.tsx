@@ -35,7 +35,7 @@ function PostedJobsList() {
   }, [])
 
 
-  if (!session) {
+ /* if (!session) {
     return (
       <main className="flex h-full w-full flex-col items-center justify-center">
         <h3 className="text-2xl font-medium text-violet-400 sm:text-3xl md:text-4xl lg:text-5xl mb-5">
@@ -54,7 +54,7 @@ function PostedJobsList() {
       </main>
     )
   }
-
+*/
 
   return (
     <>
