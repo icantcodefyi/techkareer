@@ -1,36 +1,36 @@
-"use client"
-import { SectionWrapper } from "./section-wrapper"
-import Image from "next/image"
-import { StaticImageData } from "next/image"
-import pfp from "@/assets/userpfp"
+"use client";
+import { SectionWrapper } from "./section-wrapper";
+import Image from "next/image";
+import { StaticImageData } from "next/image";
+import pfp from "@/assets/userpfp";
 
-import { Link, animateScroll as scroll } from "react-scroll"
+import { Link, animateScroll as scroll } from "react-scroll";
 export const Welcome = () => {
   return (
     <SectionWrapper>
-      <div className="flex flex-col items-center justify-center">
-        <div className="mb-8 flex items-center justify-center gap-2">
+      <div className="flex justify-center items-center flex-col ">
+        <div className="flex justify-center items-center gap-2 mb-8 ">
           <UserPfp pfp={pfp} />
           <p className="text-[#9CA3BD]">
             Trusted already by 1.5K+ professionals
           </p>
         </div>
-        <div className="mb-12 flex flex-col items-center justify-center">
-          <div className="mb-6 text-4xl font-semibold md:mb-12 md:text-[4.2rem]">
+        <div className="flex flex-col justify-center items-center mb-12">
+          <div className="text-4xl md:text-[4.2rem] font-semibold md:mb-12 mb-6">
             <span>Ready.</span>
             <span>Set.</span>
-            <span className="underline decoration-blue-500 decoration-wavy decoration-[2px] md:decoration-[3px]">
+            <span className="underline decoration-wavy decoration-[2px] md:decoration-[3px] decoration-blue-500">
               Hire.
             </span>
           </div>
-          <p className="w-full text-center text-lg leading-8 text-[#858694] md:w-[55%] md:text-xl md:leading-10">
+          <p className="w-full md:w-[55%] text-lg md:text-xl text-[#858694] text-center  leading-8 md:leading-10">
             TechKareer is used by numerous businesses, institutions, and
             recruiters to significantly enhance their screening and recruitment
             procedures.
           </p>
         </div>
         <Link spy={true} smooth={true} duration={500} to={"features"}>
-          <button className="rounded-full border-[1px] border-solid border-transparent bg-white px-8 py-4 text-xs font-bold tracking-wider text-black shadow-[0px_0px_10px_1px_#fed7e2] hover:border-gray-200 hover:bg-transparent hover:text-white hover:shadow-transparent hover:duration-150">
+          <button className="bg-white text-black px-8 py-4  font-bold text-xs rounded-full  tracking-wider shadow-[0px_0px_10px_1px_#fed7e2] hover:bg-transparent hover:text-white hover:shadow-transparent border-solid border-[1px] border-transparent hover:border-gray-200 hover:duration-150">
             KNOW MORE
           </button>
         </Link>
@@ -45,20 +45,20 @@ export const Welcome = () => {
                 </motion.video> */}
       </div>
     </SectionWrapper>
-  )
-}
+  );
+};
 
 type UserPfpProps = {
-  pfp: StaticImageData[]
-}
+  pfp: StaticImageData[];
+};
 const UserPfp: React.FC<UserPfpProps> = ({ pfp }) => {
   return (
     <div className="flex">
       {pfp.map((pfp, index) => (
         <div
-          className={`relative h-10 w-10 overflow-hidden rounded-full border-2 ${
+          className={`relative w-10 h-10 rounded-full overflow-hidden border-2 ${
             index > 0 ? "ml-[-10px]" : "ml-0"
-          } transition duration-300 ease-in-out hover:-translate-y-2.5`}
+          } hover:-translate-y-2.5 transition duration-300 ease-in-out`}
           key={index}
         >
           <Image
@@ -71,5 +71,5 @@ const UserPfp: React.FC<UserPfpProps> = ({ pfp }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
