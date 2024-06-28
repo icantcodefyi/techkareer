@@ -1,47 +1,41 @@
-"use client";
-import { SectionWrapper } from "./section-wrapper";
-import Image, { StaticImageData } from "next/image";
-import bg from "@/assets/bg.webp";
-import { ChevronRight, CircleCheck } from "lucide-react";
-import { motion } from "framer-motion";
-import { opportunitiesArray } from "@/constants/opportunities";
-import Link from "next/link";
+"use client"
+import { SectionWrapper } from "./section-wrapper"
+import Image, { StaticImageData } from "next/image"
+import bg from "@/assets/bg.webp"
+import { ChevronRight, CircleCheck } from "lucide-react"
+import { opportunitiesArray } from "@/constants/opportunities"
+import Link from "next/link"
+
 export const Opportunities = () => {
   return (
     <SectionWrapper>
       <div
-        className="flex gap-4 flex-nowrap relative flex-col lg:flex-row"
+        className="relative flex flex-col flex-nowrap gap-4 lg:flex-row"
         id="opportunities"
       >
-        <div className="w-full lg:w-[30%] flex flex-col gap-3 mb-8">
-          <h3 className="bg-gradient-to-r from-blue-400 via-ping-200 to-pink-400 inline-block text-transparent bg-clip-text">
+        <div className="mb-8 flex w-full flex-col gap-3 lg:w-[30%]">
+          <h3 className="via-ping-200 inline-block bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">
             Opportunities
           </h3>
-          <div className="text-3xl w-full font-semibold">
+          <div className="w-full text-3xl font-semibold">
             <span>Explore</span>
             <br />
             <span className="text-purple-400">Rewarding Career</span>
             <br />
             <span>Opportunities</span>
           </div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            viewport={{ once: true }}
-            className="text-xs text-gray-200/90"
-          >
+          <p className="text-xs text-gray-200/90">
             Become part of dynamic and innovative team - Unlock your potential
             in a collaborative environment driven by excellence.
-          </motion.p>
-          <button className="bg-purple-400 hidden w-fit px-6 py-2  justify-center items-center gap-4 mt-3 cursor-pointer rounded-full group">
+          </p>
+          <button className="group mt-3 hidden w-fit cursor-pointer items-center justify-center gap-4 rounded-full bg-purple-400 px-6 py-2">
             <span>Explore </span>{" "}
-            <ChevronRight className="inline-block group-hover:translate-x-2 transition-all text-white" />
+            <ChevronRight className="inline-block text-white transition-all group-hover:translate-x-2" />
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center ">
+        <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
           {opportunitiesArray.map((item, index) => (
-            <OppurtunitiesCard
+            <OpportunitiesCard
               key={index}
               company={item.company}
               logo={item.logo}
@@ -53,22 +47,22 @@ export const Opportunities = () => {
         </div>
       </div>
     </SectionWrapper>
-  );
-};
+  )
+}
 
-type oppurtunitiesCardProps = {
-  company: string;
-  logo: StaticImageData;
-  position: string;
-  payRange: string;
+type OpportunitiesCardProps = {
+  company: string
+  logo: StaticImageData
+  position: string
+  payRange: string
   features: {
-    location: string;
-    date: string;
+    location: string
+    date: string
 
-    jobType: string;
-  }[];
-};
-const OppurtunitiesCard: React.FC<oppurtunitiesCardProps> = ({
+    jobType: string
+  }[]
+}
+const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
   company,
   logo,
   position,
@@ -82,56 +76,43 @@ const OppurtunitiesCard: React.FC<oppurtunitiesCardProps> = ({
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="rounded-2xl p-4 w-[340px] md:min-w-[390px] lg:max-w-[420px] lg:min-w-[390px] min-h-[501px]   flex flex-col gap-4 justify-evenly"
+      className="flex min-h-[501px] w-[340px] flex-col justify-evenly gap-4 rounded-2xl p-4 md:min-w-[390px] lg:min-w-[390px] lg:max-w-[420px]"
     >
-      <div className="flex justify-start items-center gap-2">
+      <div className="flex items-center justify-start gap-2">
         <Image
           src={logo}
           alt="logo"
           height={40}
           width={40}
-          className="rounded-full  bg-black/80"
+          className="rounded-full bg-black/80"
         />
-        <p className="text-lg text-black ">{company}</p>
+        <p className="text-lg text-black">{company}</p>
       </div>
-      <div className="flex justify-center items-center flex-col mb-6">
-        <h3 className="text-xl font-semibold text-[#02015A] mb-3">
+      <div className="mb-6 flex flex-col items-center justify-center">
+        <h3 className="mb-3 text-xl font-semibold text-[#02015A]">
           {position.toUpperCase()}
         </h3>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: "easeInOut" }}
-          viewport={{ once: true }}
-          className="text-2xl md:text-3xl mt-2  w-[80%] text-black/80 text-center font-lighter font-bold tracking-wider leading-6"
-        >
+        <p className="font-lighter mt-2 w-[80%] text-center text-2xl font-bold leading-6 tracking-wider text-black/80 md:text-3xl">
           {payRange}
-        </motion.p>
+        </p>
       </div>
       <div>
         {features.map((item, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
-            viewport={{ once: true }}
-            key={index}
-            className="flex justify-center items-start gap-4 flex-col px-4 py-6"
-          >
-            <p className="text-lg font-semibold text-black/70 flex justify-start items-center gap-2 w-full">
+          <div className="flex flex-col items-start justify-center gap-4 px-4 py-6">
+            <p className="flex w-full items-center justify-start gap-2 text-lg font-semibold text-black/70">
               <CircleCheck className="inline-block w-[10%]" />{" "}
               <span className="w-[90%]">{item.location}</span>
             </p>
-            <p className="text-lg font-semibold text-black/70 flex justify-start items-center gap-2 w-full">
+            <p className="flex w-full items-center justify-start gap-2 text-lg font-semibold text-black/70">
               <CircleCheck className="inline-block w-[10%]" />{" "}
               <span className="w-[90%]">{item.date}</span>
             </p>
 
-            <p className="text-lg font-semibold text-black/70 flex justify-start items-center gap-2 w-full">
+            <p className="flex w-full items-center justify-start gap-2 text-lg font-semibold text-black/70">
               <CircleCheck className="inline-block w-[10%]" />{" "}
               <span className="w-[90%]">{item.jobType}</span>
             </p>
-          </motion.div>
+          </div>
         ))}
       </div>
       <Link
@@ -139,11 +120,11 @@ const OppurtunitiesCard: React.FC<oppurtunitiesCardProps> = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <button className="px-5 py-3 rounded-full bg-black text-white w-fit self-center text-2xl font-semibold flex group transition-all justify-center items-center gap-4">
+        <button className="group flex w-fit items-center justify-center gap-4 self-center rounded-full bg-black px-5 py-3 text-2xl font-semibold text-white transition-all">
           <span>Apply Now</span>{" "}
-          <ChevronRight className="inline-block group-hover:translate-x-2 transition-all" />
+          <ChevronRight className="inline-block transition-all group-hover:translate-x-2" />
         </button>
       </Link>
     </div>
-  );
-};
+  )
+}
