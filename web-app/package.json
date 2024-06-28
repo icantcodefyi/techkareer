@@ -8,9 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "validate": "npm run lint && npm run format && npm run typecheck",
-    "prepare": "husky install"
-
+    "validate": "npm run lint && npm run format && npm run typecheck"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.2",
