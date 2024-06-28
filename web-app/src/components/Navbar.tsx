@@ -2,7 +2,6 @@
 import { NavLinks } from "@/constants/NavLinks";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.webp";
 import Image from "next/image";
@@ -21,12 +20,7 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full h-fit py-4 md:py-9 flex justify-center items-center">
-      <motion.div
-        initial={{ opacity: 0 }} // Set initial opacity to 0
-        animate={{ opacity: 1 }} // Animate opacity to 1
-        transition={{ duration: 0.8 }}
-        className="flex  justify-between items-center w-[1300px] md:px-6 md:ml-8 px-4 "
-      >
+      <div className="flex  justify-between items-center w-[1300px] md:px-6 md:ml-8 px-4 ">
         <div className=" w-[160px] md:w-[220px]">
           <Image
             className="cursor-pointer"
@@ -60,40 +54,30 @@ export const Navbar = () => {
             duration={500}
             to={"opportunities"}
           >
-            <motion.button
-              className="bg-[#15151f] px-4 py-2 md:px-6 md:py-3 border-[.1px] border-solid border-gray-200/10 rounded-full  font-bold tracking-wider"
-              whileHover={{ backgroundColor: "#F9F9F9", color: "#000" }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <button className="bg-[#15151f] px-4 py-2 md:px-6 md:py-3 border-[.1px] border-solid border-gray-200/10 rounded-full font-bold tracking-wider hover:bg-[#F9F9F9] hover:text-[#000] duration-300">
               <p className="text-xs md:text-sm">OPPORTUNITIES</p>
-            </motion.button>
+            </button>
           </ReactLink>
-          {status ? (
-            <motion.button
+          {status == "authenticated" ? (
+            <button
               onClick={() => {
                 router.push("/opportunities");
               }}
               className="bg-white/90 min-w-[100px] flex justify-center items-center px-4 py-2 md:px-6 md:py-3 border-[.1px] border-solid border-gray-200/10 rounded-full   font-bold tracking-wider "
-              whileHover={{ backgroundColor: "#F9F9F9", color: "#000" }}
-              whileTap={{ scale: 0.95 }}
             >
               <p className="text-xs md:text-sm text-black">
-                {loggingOut ? <Loader className="animate-spin" /> : "Dashboard"}
+                {loggingOut ? <Loader className="animate-spin" /> : "DASHBOARD"}
               </p>
-            </motion.button>
+            </button>
           ) : (
             <Link href={"/login"}>
-              <motion.button
-                className="bg-white/90 px-4 py-2 md:px-6 md:py-3 border-[.1px] border-solid border-gray-200/10 rounded-full   font-bold tracking-wider"
-                whileHover={{ backgroundColor: "#F9F9F9", color: "#000" }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="bg-white/90 px-4 py-2 md:px-6 md:py-3 border-[.1px] border-solid border-gray-200/10 rounded-full font-bold tracking-wider hover:bg-[#F9F9F9] hover:text-[#000] duration-300">
                 <p className="text-xs md:text-sm text-black">LOGIN</p>
-              </motion.button>
+              </button>
             </Link>
           )}
         </div>
-      </motion.div>
+      </div>
     </nav>
   );
 };

@@ -6,7 +6,6 @@ import { Welcome } from "./welcome";
 import testimonials from "@/assets/testimonials/testimonials";
 import { Opportunities } from "./opportunities";
 import { Companies } from "./companies";
-import { Sponsor } from "./sponsor";
 import { Footer } from "./footer";
 import { useSession } from "next-auth/react";
 import BootCamps from "./BootCamps";
@@ -23,12 +22,11 @@ const LandingPage = () => {
         className="mt-0"
         direction="left"
         speed="slow"
-        />
+      />
       <Feature />
       <Opportunities />
-      <BootCamps/>
+      <BootCamps />
       <Companies />
-      {/* <Sponsor /> */}
       <Footer />
     </main>
   );

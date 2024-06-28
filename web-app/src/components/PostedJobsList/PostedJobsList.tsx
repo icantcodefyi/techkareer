@@ -10,6 +10,9 @@ import { useSession } from "next-auth/react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
+import Image from "next/image";
+import { organizationPlaceHolder } from "@/assets/assets";
+
 function PostedJobsList() {
   const { data: session } = useSession();
   const [jobs, setJobs] = useState<Opportunity[]>([]);
@@ -20,22 +23,21 @@ function PostedJobsList() {
   useEffect(() => {
     async function fetchJobs() {
       try {
-        const response = await fetch('/api/opportunities')
-        if (!response.ok) throw new Error('Failed to fetch')
-        const data = await response.json()
-        setJobs(data)
+        const response = await fetch("/api/opportunities");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setJobs(data);
       } catch (error) {
-        console.error('Error fetching jobs:', error)
+        console.error("Error fetching jobs:", error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
 
-    fetchJobs()
-  }, [])
+    fetchJobs();
+  }, []);
 
-
- /* if (!session) {
+  /* if (!session) {
     return (
       <main className="flex h-full w-full flex-col items-center justify-center">
         <h3 className="text-2xl font-medium text-violet-400 sm:text-3xl md:text-4xl lg:text-5xl mb-5">
@@ -66,31 +68,32 @@ function PostedJobsList() {
         <>
           <div className="flex sm:flex-row flex-col h-full w-full">
             <div className="w-full sm:w-[45%] border-r border-gray-300 overflow-y-auto">
-              {jobs && jobs.map((job) => (
-                isMobile ? (
-                  <Drawer key={job.jobId}>
-                    <DrawerTrigger asChild>
-                      <div>
-                        <JobCard
-                          job={job}
-                          isSelected={selectedJob?.jobId === job.jobId}
-                          onClick={() => setSelectedJob(job)}
-                        />
-                      </div>
-                    </DrawerTrigger>
-                    <DrawerContent>
-                      <JobDetails job={job} />
-                    </DrawerContent>
-                  </Drawer>
-                ) : (
-                  <JobCard
-                    key={job.jobId}
-                    job={job}
-                    isSelected={selectedJob?.jobId === job.jobId}
-                    onClick={() => setSelectedJob(job)}
-                  />
-                )
-              ))}
+              {jobs &&
+                jobs.map((job) =>
+                  isMobile ? (
+                    <Drawer key={job.jobId}>
+                      <DrawerTrigger asChild>
+                        <div>
+                          <JobCard
+                            job={job}
+                            isSelected={selectedJob?.jobId === job.jobId}
+                            onClick={() => setSelectedJob(job)}
+                          />
+                        </div>
+                      </DrawerTrigger>
+                      <DrawerContent>
+                        <JobDetails job={job} />
+                      </DrawerContent>
+                    </Drawer>
+                  ) : (
+                    <JobCard
+                      key={job.jobId}
+                      job={job}
+                      isSelected={selectedJob?.jobId === job.jobId}
+                      onClick={() => setSelectedJob(job)}
+                    />
+                  )
+                )}
             </div>
             {!isMobile && (
               <div className="hidden sm:block w-[55%] overflow-y-auto p-6">
@@ -113,30 +116,58 @@ export default PostedJobsList;
 function JobDetails({ job }: { job: Opportunity }) {
   return (
     <div className="p-6">
-      <img
+      {/* <img
         src={job.companyLogo}
         className="w-12 h-12 rounded-full"
         alt=""
         style={{
           filter: job.invertCompanyLogo ? "invert(100%)" : "",
         }}
-      />
-      <h2 className="text-2xl font-bold mb-4">{job.role}</h2>
+      /> */}
+      <div className="logo-container relative h-[4rem] w-[4rem] overflow-hidden ">
+        {job.companyLogo ? (
+          <img
+            src={job.companyLogo}
+            className="w-full rounded-full absolute"
+            alt=""
+            width={50}
+            // height={50}
+            style={{
+              filter: job.invertCompanyLogo ? "invert(100%)" : "",
+            }}
+          />
+        ) : (
+          <Image
+            src={organizationPlaceHolder}
+            className="h-full w-full rounded-full "
+            alt=""
+            width={50}
+            height={50}
+          />
+        )}
+      </div>
+      <h2 className="text-2xl font-bold mt-2 mb-4">{job.role}</h2>
       <p className="text-lg mb-2">{job.companyName}</p>
       <p className="text-gray-600 mb-4">{job.location}</p>
 
-      <h3 className="text-xl font-semibold mb-2">About the job</h3>
+      {/* <h3 className="text-xl font-semibold mb-2">About the job</h3>
       <p>Project Role: {job.role}</p>
-      <p>Project Role Description: Design, build and configure applications to meet business process and application requirements.</p>
+      <p>
+        Project Role Description: Design, build and configure applications to
+        meet business process and application requirements.
+      </p>
 
       <h3 className="text-xl font-semibold mt-4 mb-2">Required Skills</h3>
       <p>Must have skills: [List skills here]</p>
 
       <h3 className="text-xl font-semibold mt-4 mb-2">Experience</h3>
-      <p>Minimum 2 Year(s) Of Experience Is Required</p>
+      <p>Minimum 2 Year(s) Of Experience Is Required</p> */}
 
       <div className="flex space-x-4 mt-4">
-        <Link href={`https://airtable.com/appX3kHVPitSufv76/shrwapikBLgGoQcLD?prefill_Job ID=${job.jobId}`} target="_blank">
+        <Link
+          href={`https://airtable.com/appX3kHVPitSufv76/shrwapikBLgGoQcLD?prefill_Job ID=${job.jobId}`}
+          target="_blank"
+        >
           <Button variant="secondary" className="flex items-center space-x-2">
             <ExternalLinkIcon className="w-4 h-4" />
             <span>Apply</span>
@@ -167,7 +198,7 @@ function BookmarkIcon(props: any) {
     >
       <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
     </svg>
-  )
+  );
 }
 
 function ExternalLinkIcon(props: any) {
@@ -188,5 +219,5 @@ function ExternalLinkIcon(props: any) {
       <path d="M10 14 21 3" />
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
     </svg>
-  )
+  );
 }
