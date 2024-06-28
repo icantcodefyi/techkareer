@@ -4,9 +4,9 @@
 // import user4 from "./user4.webp"
 
 // import test5 from "./test5.webp";
-import paras from "../testimonials/paras.jpeg";
-import ayush from "../testimonials/ayush.jpeg";
-import saket from "../testimonials/saket.jpeg";
+import paras from "../testimonials/paras.jpeg"
+import ayush from "../testimonials/ayush.jpeg"
+import saket from "../testimonials/saket.jpeg"
 
-const pfp = [ayush, paras, saket];
-export default pfp;
+const pfp = [ayush, paras, saket]
+export default pfp

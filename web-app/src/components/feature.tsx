@@ -1,21 +1,21 @@
-"use client";
-import Image, { StaticImageData } from "next/image";
-import { SectionWrapper } from "./section-wrapper";
-import feature from "@/constants/features";
-import bg from "@/assets/bg.webp";
-import React from "react";
+"use client"
+import Image, { StaticImageData } from "next/image"
+import { SectionWrapper } from "./section-wrapper"
+import feature from "@/constants/features"
+import bg from "@/assets/bg.webp"
+import React from "react"
 
 export const Feature = () => {
   return (
     <SectionWrapper>
-      <div className="flex justify-center items-center flex-col" id="features">
-        <h3 className="self-end md:self-center bg-gradient-to-r from-blue-400 via-ping-200 to-pink-400 inline-block text-transparent bg-clip-text">
+      <div className="flex flex-col items-center justify-center" id="features">
+        <h3 className="via-ping-200 inline-block self-end bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent md:self-center">
           Included
         </h3>
-        <h2 className="text-right w-full md:text-center text-3xl tracking-wide mt-4 mb-16">
+        <h2 className="mb-16 mt-4 w-full text-right text-3xl tracking-wide md:text-center">
           Powerful features tailored to your needs
         </h2>
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-4 ">
+        <div className="grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
           {feature.map((item, index) => (
             <FeatureCard
               key={index}
@@ -28,14 +28,14 @@ export const Feature = () => {
         </div>
       </div>
     </SectionWrapper>
-  );
-};
+  )
+}
 type featureCardProps = {
-  icon: React.ReactNode;
-  name: string;
-  description: string;
-  duration?: number;
-};
+  icon: React.ReactNode
+  name: string
+  description: string
+  duration?: number
+}
 const FeatureCard: React.FC<featureCardProps> = ({
   icon,
   name,
@@ -49,15 +49,15 @@ const FeatureCard: React.FC<featureCardProps> = ({
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="p-4 rounded-2xl flex flex-col justify-center items-center max-w-[368px] max-h-[278px] cursor-pointer"
+      className="flex max-h-[278px] max-w-[368px] cursor-pointer flex-col items-center justify-center rounded-2xl p-4"
     >
-      <div className="bg-[#5287FA] p-2 rounded-full">{icon}</div>
-      <h3 className="text-xl font-bold mt-4 text-center text-[#02015A]">
+      <div className="rounded-full bg-[#5287FA] p-2">{icon}</div>
+      <h3 className="mt-4 text-center text-xl font-bold text-[#02015A]">
         {name}
       </h3>
-      <p className="text-sm mt-2  w-[80%] text-center font-lighter text-gray-700 tracking-wider leading-6">
+      <p className="font-lighter mt-2 w-[80%] text-center text-sm leading-6 tracking-wider text-gray-700">
         {description}
       </p>
     </div>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
-import React from "react";
-import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
+import React from "react"
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards"
 import {
   SAKET_SARIN_PHOTO,
   PARAS_WAYKOLE_PHOTO,
   AYUSH_SINGHAL_PHOTO,
-} from "@/utils/constants";
+} from "@/utils/constants"
 
 const Testimonials = () => {
   const testimonials = [
@@ -40,14 +40,14 @@ const Testimonials = () => {
     //   name: "Herman Melville",
     //   title: "Moby-Dick",
     // },
-  ];
+  ]
 
   return (
     <section className="py-12">
-      <h1 className="text-white font-bold text-xl sm:text-4xl text-center">
+      <h1 className="text-center text-xl font-bold text-white sm:text-4xl">
         Testimonials
       </h1>
-      <div className="h-[25rem] rounded-md flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      <div className="dark:bg-grid-white/[0.05] relative flex h-[25rem] flex-col items-center justify-center overflow-hidden rounded-md antialiased dark:bg-black">
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
@@ -55,7 +55,7 @@ const Testimonials = () => {
         />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials
