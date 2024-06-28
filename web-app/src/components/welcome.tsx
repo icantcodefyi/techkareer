@@ -11,7 +11,9 @@ export const Welcome = () => {
       <div className="flex justify-center items-center flex-col ">
         <div className="flex justify-center items-center gap-2 mb-8 ">
           <UserPfp pfp={pfp} />
-          <p className="text-[#9CA3BD]">Trusted already by 1.2k+</p>
+          <p className="text-[#9CA3BD]">
+            Trusted already by 1.5K+ professionals
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center mb-12">
           <div className="text-4xl md:text-[4.2rem] font-semibold md:mb-12 mb-6">
