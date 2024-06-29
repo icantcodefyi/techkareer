@@ -10,9 +10,6 @@ import { useSession } from "next-auth/react"
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
-import Image from "next/image"
-import { organizationPlaceHolder } from "@/assets/assets"
-
 function PostedJobsList() {
   const { data: session } = useSession()
   const [jobs, setJobs] = useState<Opportunity[]>([])
@@ -137,8 +134,8 @@ function JobDetails({ job }: { job: Opportunity }) {
             }}
           />
         ) : (
-          <Image
-            src={organizationPlaceHolder}
+          <img
+            src={"/organization-placeholder.webp"}
             className="h-full w-full rounded-full"
             alt=""
             width={50}

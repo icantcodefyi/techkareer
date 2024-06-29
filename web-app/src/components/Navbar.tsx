@@ -3,8 +3,6 @@ import { NavLinks } from "@/constants/NavLinks"
 import React, { useState } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import logo from "@/assets/logo.webp"
-import Image from "next/image"
 import { Link as ReactLink } from "react-scroll"
 import Link from "next/link"
 import { signOut, useSession } from "next-auth/react"
@@ -22,9 +20,9 @@ export const Navbar = () => {
     <nav className="flex h-fit w-full items-center justify-center py-4 md:py-9">
       <div className="flex w-[1300px] items-center justify-between px-4 md:ml-8 md:px-6">
         <div className="w-[160px] md:w-[220px]">
-          <Image
+          <img
             className="cursor-pointer"
-            src={logo}
+            src={"logo.webp"}
             alt="TechKareer"
             onClick={() => router.push("/")}
           />

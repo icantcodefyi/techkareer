@@ -1,11 +1,5 @@
 "use client"
-import { organizationPlaceHolder } from "@/assets/assets"
 import { Opportunity } from "@/types/type"
-
-import React from "react"
-
-import Image from "next/image"
-import Link from "next/link"
 
 function JobCard({
   job,
@@ -62,8 +56,8 @@ function JobCard({
                 }}
               />
             ) : (
-              <Image
-                src={organizationPlaceHolder}
+              <img
+                src={"/organization-placeholder.webp"}
                 className="h-full w-full rounded-full"
                 alt=""
                 width={50}

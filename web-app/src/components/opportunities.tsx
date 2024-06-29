@@ -82,6 +82,7 @@ const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
         <Image
           src={logo}
           alt="logo"
+          loading="lazy"
           height={40}
           width={40}
           className="rounded-full bg-black/80"

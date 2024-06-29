@@ -4,9 +4,6 @@ import { BottomBar, Navbar } from "@/components/components"
 import { getNameFromEmail } from "@/utils/utils"
 import { useSession } from "next-auth/react"
 import React from "react"
-
-import placeholder from "@/assets/placholder-jobseeker.webp"
-import Image from "next/image"
 // import { useUserInfo } from "@/hooks/useUser";
 import {
   ChevronRight,
@@ -107,7 +104,7 @@ const ProfileCard = ({ user }: { user: any }) => {
         </div>
         <div>
           {userInfo?.profilePic ? (
-            <Image
+            <img
               src={userInfo.profilePic}
               width={100}
               height={100}
@@ -115,7 +112,12 @@ const ProfileCard = ({ user }: { user: any }) => {
               className="rounded-full"
             />
           ) : (
-            <Image src={placeholder} width={100} height={100} alt="" />
+            <img
+              src={"/placeholder-jobseeker.webp"}
+              width={100}
+              height={100}
+              alt=""
+            />
           )}
         </div>
         <div className="flex flex-col items-center justify-center gap-6">
