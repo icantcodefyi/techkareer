@@ -38,9 +38,9 @@ To get started with local development, follow these simple steps:
    npm run dev
    ```
 
-## Settng up new environment variables in `app` directory
+## Settng up new environment variables in `web-app` directory
 
-1. Go to `app` directory
+1. Go to `web-app` directory
 
 2. Add new environment variable in `.env.local` and `.env.example`
 3. got to `src/env.ts`
