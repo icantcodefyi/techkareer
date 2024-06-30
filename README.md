@@ -8,7 +8,7 @@ Our platform is built with the following technologies:
 
 - Next.js
 - TypeScript
-- Postgres
+- PostgreSQL
 - Tailwind CSS
 
 ## Local Development Instructions
