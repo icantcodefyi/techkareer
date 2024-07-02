@@ -10,29 +10,18 @@ import { useSession } from "next-auth/react"
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
-function PostedJobsList() {
+function PostedJobsList({ initialJobs }: { initialJobs: Opportunity[] }) {
   const { data: session } = useSession()
-  const [jobs, setJobs] = useState<Opportunity[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [jobs] = useState<Opportunity[]>(initialJobs)
   const [selectedJob, setSelectedJob] = useState<Opportunity | null>(null)
   const isMobile = useMediaQuery("(max-width: 640px)")
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    async function fetchJobs() {
-      try {
-        const response = await fetch("/api/opportunities")
-        if (!response.ok) throw new Error("Failed to fetch")
-        const data = await response.json()
-        setJobs(data)
-      } catch (error) {
-        console.error("Error fetching jobs:", error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+    console.log(`PostedJobsList received ${initialJobs.length} jobs`) // Debug log
+    setIsLoading(false) 
+  }, [initialJobs])
 
-    fetchJobs()
-  }, [])
 
   /* if (!session) {
     return (
